@@ -33,8 +33,9 @@ ul {
  *
  */
 
-.container {
+.container, .content {
 	display: flex;
+	display: -webkit-flex;
 	flex-wrap: wrap;
 }
 
@@ -100,7 +101,7 @@ ul {
 	font-size: 3em;
 }
 
-@media screen and (max-width: 760px) {
+@media screen and (max-width: 550px) {
 
 	.header__logo {
 		height: 36px;
@@ -116,10 +117,6 @@ ul {
 	.menu {
 		display: inline-block;
 		float: right;
-	}
-
-	.nav {
-		display: none;
 	}
 
 }
@@ -162,7 +159,7 @@ ul {
   color: #212121;
 }
 
-@media screen and (max-width: 760px) {
+@media screen and (max-width: 550px) {
 
 	.nav__item {
 		padding: 0;
@@ -172,10 +169,21 @@ ul {
 		display: inline-block;
 		padding: 24px 10px;
 		font-size: 1.25em;
+
 	}
 
 	.nav {
-		display:none;
+		position: absolute;
+		-webkit-transform: translate(0px, 0px);
+		transform: translate(0px, 0px);
+		transition: transform 0.9s ease;
+		background-color: white;
+	}
+
+	.nav.open {
+		-webkit-transform: translate(0, 50);
+		transform: translate(0, 50);
+		z-index: 5;
 	}
 
 }
@@ -386,18 +394,26 @@ main {
  *
  */
 
-@media screen and (min-width: 761px) {
+@media screen and (min-width: 551px) {
 
 	.hero {
 		width: 66.7%;
+		order: 0;
+	}
+
+	.weather {
+		width: 33.3%;
+		order: 1;
 	}
 
 	.top-news {
-		width: 33.3%;
+		width: 50%;
+		order: 2;
 	}
 
-	.scores, .weather {
+	.scores {
 		width: 50%;
+		order: 3;
 	}
 
 }
@@ -405,6 +421,7 @@ main {
 .recent-news {
   clear: both;
   padding: 1em;
+  order: 4;
 }
 
 .snippet {
